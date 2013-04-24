@@ -1,0 +1,328 @@
+/* =======================================================
+  	RESET! Put together from a few resets, most 
+	notably the Eric Meyer Reset and Chris Coyier's
+	box-sizing trick
+========================================================== */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-family: "Cardo", "Times", serif;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	text-decoration: none;
+}
+
+
+/*  Here is that box-sizing trick, plus a style to 
+	attempt to make the text as readable as possible on
+	browsers that support it 
+*/
+
+* {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+	text-rendering: optimizeLegibility;
+}
+
+/* HTML5 display-role reset for older browsers; 
+   This part comes from Normalize 
+*/
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+
+/* =======================================================
+      Variables
+	  
+	  NOTE: These won't show up in the CSS, since they
+	  are being defined and used by the SCSS - once it
+	  is compiled, the variables magically vanish into
+	  the code as actual values. But here they are in the
+	  comments, so you have an idea of what SCSS variables
+	  look like:
+	  
+	  
+	 	$defaultWidth: 68.75em;
+		$smallDeskWidth: 48em;
+		$tabletWidth: 37.5em;
+		$phoneWidth: 23.5em;
+		
+		$pageColor: #FFF;
+		$bgColor: #ccc;
+		$navColor: #FC0;
+		$footerColor: #aaa;
+		
+		$borderColors: #CCC;
+		$linkColors: #633;
+		
+		
+	   And they are used like this:
+		
+			body {
+				background-color:$bgColor;	
+			}
+		
+	   Once compiled, that line of code turns into:
+		
+			body {
+				background-color: #ccc;	
+			}
+		
+	   Plus any other instances of the variable $bgColor -
+	   which I use in several places through the code -
+	   are replaced with that value. This means if I want to
+	   change all of those colors, I only need to go into
+	   my SCSS, change the variable definition once, and 
+	   all instances of that variable will be changed for me
+	   upon compilation. Neat!
+
+========================================================== */
+
+
+$defaultWidth: 68.75em;
+$smallDeskWidth: 48em;
+$tabletWidth: 37.5em;
+$phoneWidth: 23.5em;
+
+$pageColor: #FFF;
+$bgColor: #ccc;
+$navColor: #FC0;
+$footerColor: #aaa;
+
+$borderColors: #CCC;
+$linkColors: #633;
+
+/* ===============================================
+  	  My styles and such
+================================================== */
+
+body {
+	background-color:$bgColor;	
+}
+
+#wrapper {
+	width: $defaultWidth;
+	max-width:90%;
+	margin: 1em auto 0 auto;
+	position: relative;
+	min-height: 100%;
+}
+
+header {
+	background-color: $pageColor;	
+	width: 100%;
+	height: 3em;
+	margin: .6em 0;
+	padding: 1em;
+}
+
+#logo {
+	float: left;	
+	font-family:  "Signika Negative", "Gotham", "Helvetica", sans-serif;
+	text-decoration: none;
+	font-size: 1.1em;
+	text-align: center;
+}	
+
+#mainColumn {
+	width: 96%;	
+	margin: 0em 1em;
+}
+		
+h1 {
+	color: #333;
+	font-family: "Signika Negative", "Gotham", "Helvetica", sans-serif;
+	font-size: 2em;
+	font-weight: bold;
+}
+
+h2 {
+	color: #333;
+	font-family: "Signika Negative", "Gotham", "Helvetica", sans-serif;
+	font-size: 1.5em;
+	line-height: 1.3em;
+	margin-bottom: 1em;
+}
+
+p {
+	margin: 0 0 1.1em 0;
+	color: #000;
+	font-family: "Cardo", "Times", serif;
+	font-size: 1em;
+	line-height: 1.3em;
+}
+	
+nav {
+	position: absolute;
+	top: .6em;
+	right: .7em;
+	line-height:2em;
+	ul {
+		float:right;
+	}
+	li {
+		display: inline;
+		border-left: 1px $borderColors solid;
+		a {
+			font-family:  "Signika Negative", "Gotham", "Helvetica", sans-serif;
+			text-align: center;
+			padding: .2em .8em;
+			margin: 0 0 0 .3em;
+			color: $linkColors;
+		}
+		a.activeLink {
+			background-color:$navColor;
+		}
+		a:hover {
+			background-color:$navColor;
+			text-decoration:none;
+		}
+	}
+	li:first-child {
+			border: none;
+		}
+}
+
+#mainContent {
+	background-color: $pageColor;
+	float: left;
+	padding: 1em;
+	margin-top: 1.5em;
+	width:68%; 
+}
+
+.accordion {
+	width: 100%;
+	.accordionitem {
+		h3 {
+			margin-bottom: 1em;
+			font-family:  "Signika Negative", "Gotham", "Helvetica", sans-serif;
+			font-size: 1em;
+			color: #333;
+			text-decoration: none;
+		}
+		background-color: #AAA;
+		height: 2em;
+		overflow:hidden;
+		margin-bottom: 1em;
+		padding: .5em;
+	}
+}
+
+#sideBar {
+	background-color: $pageColor;
+	min-height: 10em;
+	h2 {
+		font-size: 1.2em;
+		line-height: 1.2em;
+		margin-bottom: .4em;
+	} 
+	p {
+		font-size: .8em;
+		line-height: 1.2em;
+	}
+	.sideItem {
+		padding-bottom: 1em;
+	}
+	.sideItem:last-child {
+		padding: 0;
+	}
+	float: right;
+	border-left: 1px $borderColors solid;
+	padding: 1em; 
+	margin-top: 1.5em;
+	width: 28%; 
+}
+ 
+#sidebox {
+	@extend #sideBar;
+	background-color:#FFC;
+}
+
+footer {
+	background-color:$footerColor;
+	position:fixed;
+	bottom: 0em;
+	left:6em;
+	right: 6em;
+	height: 2.5em;
+	width: auto;
+	padding: .5em;
+}
+
+
+/* =============================================== 
+   		    MEDIA QUERIES 
+   =============================================== */
+
+@media only screen and (max-width: $smallDeskWidth) {
+	#wrapper {
+		background-color:none;	
+		width: $smallDeskWidth;
+		max-width:94%;
+		min-width: 29em;
+		margin-bottom: 3em;
+	}
+		
+	#sideBar  {
+		float: none;
+		clear: both;	
+		width: 100%; 
+		padding: 1em;
+		min-height: 100px;
+		border: none;		
+	}
+
+	#mainContent {
+		background-color: $pageColor;	
+		width: 100%;
+		margin-bottom: 2em;
+	}
+	
+}
